@@ -19,7 +19,7 @@ public class ProdService {
 	private ProdDao adminDao;
 
 	public void save(Producto admin) {
-	
+		admin.setFua(new Timestamp(new Date().getTime()));
 		adminDao.save(admin);
 	}
 

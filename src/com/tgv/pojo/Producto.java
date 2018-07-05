@@ -1,6 +1,7 @@
 package com.tgv.pojo;
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class Producto implements Serializable {
 	private int stock;
 	private float precio_c;
 	private float precio_v;
-	private Date fua;
+	private Timestamp fua;
 	private String img_tp;
 	
 	
@@ -64,11 +65,11 @@ public class Producto implements Serializable {
 		this.precio_v = precio_v;
 	}
 
-	public Date getFua() {
+	public Timestamp getFua() {
 		return fua;
 	}
 
-	public void setFua(Date fua) {
+	public void setFua(Timestamp fua) {
 		this.fua = fua;
 	}
 
