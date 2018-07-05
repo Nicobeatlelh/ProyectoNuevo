@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+
+	<jee:jndi-lookup jndi-name="jdbc/comercio5" id="dataSource"
+		expected-type="javax.sql.DataSource">
+	</jee:jndi-lookup>
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.tgv.dao"></context:component-scan>
+	<bean name="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	<property ref="dataSource" name="dataSource"></property>
+	<property name="packagesToScan" value="com.tgv.pojo"></property>
+	<property name="hibernateProperties">
+		<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+			<prop key="hibernate.show_sql">true</prop>
+			<prop key="hibernate.id.new_generator_mappings">false</prop>
+		</props>
+	</property>
+	</bean>
+	<bean id="exceptionTranslator"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor">
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>
