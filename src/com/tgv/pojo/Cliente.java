@@ -1,6 +1,17 @@
 package com.tgv.pojo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Clientes")
 public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_cli;
 	private String nom_cli;
 	private String tel_cli;

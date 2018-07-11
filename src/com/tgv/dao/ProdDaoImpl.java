@@ -16,11 +16,8 @@ import com.tgv.pojo.Producto;
 
 @Transactional
 @Repository
-public class ProdDaoImpl implements InterfazGenerics<Producto> {
+public class ProdDaoImpl extends ClassGenerics<Producto> {
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}

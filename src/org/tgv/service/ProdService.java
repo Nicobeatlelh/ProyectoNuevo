@@ -9,6 +9,7 @@ import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tgv.dao.ClassGenerics;
 import com.tgv.dao.InterfazGenerics;
 import com.tgv.pojo.Producto;
 
@@ -16,7 +17,7 @@ import com.tgv.pojo.Producto;
 public class ProdService {
 	
 	@Autowired
-	private InterfazGenerics adminDao;
+	private ClassGenerics<Producto> adminDao;
 
 	public void save(Producto admin) {
 		admin.setFua(new Timestamp(new Date().getTime()));

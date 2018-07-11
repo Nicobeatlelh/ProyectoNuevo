@@ -5,13 +5,14 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tgv.pojo.Cliente;
 
-public class ClienteDaoImpl implements InterfazGenerics<Cliente> {
-	
-	@Autowired
-	private SessionFactory sessionFactory;
+@Transactional
+@Repository
+public class ClienteDaoImpl extends ClassGenerics<Cliente> {
 	
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
