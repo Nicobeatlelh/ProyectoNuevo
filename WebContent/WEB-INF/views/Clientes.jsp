@@ -8,6 +8,8 @@
 <%@ page import="org.springframework.jdbc.CannotGetJdbcConnectionException" %>
 <%@ page import="org.springframework.dao.DataAccessException" %>
 
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -56,123 +58,64 @@
                 <div class="row">  
      <!-- Comienza el main ************************* -->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="container principal">
-            <h5>Accesos rápidos</h5>
-            
-<!-- Tab links -->
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'crear-factura')">Crear factura</button>
-  <button class="tablinks" onclick="openCity(event, 'proveedores')">Proveedores</button>
-  <button class="tablinks" onclick="openCity(event, 'clientes')">Clientes</button>
-  <button class="tablinks" onclick="openCity(event, 'Productos')">Productos</button>
-</div>
-
-<!-- Tab content -->
-<div id="crear-factura" class="tabcontent">
-  <h3>Creación factura</h3>
-  <p>London is the capital city of England.</p>
-</div>
-
-<div id="proveedores" class="tabcontent">
-  <h3>Proveedores</h3>
-  <form action="TomarDatosProveedores" method="get">
-  <label>Nombre: </label>
-  <input type="text" value="nombre" name="nombre"><br>
-  <label>Teléfono</label>
-  <input type="text" name="telefono" value="telefono"><br><br>
-  <input type="submit" value="Submit">
-</form> 
-</div>
-
-<div id="clientes" class="tabcontent">
-  <h3>Clientes</h3>
-  <form action="ClientesServlet" method="post">
-  <label>Id:</label>
-  <input type="text" name="id" value="id"><br>
-  <label>Nombre: </label>
-  <input type="text" value="nombre" name="nombre"><br>
-  <label>Teléfono:</label>
-  <input type="text" name="telefono" value="telefono"><br>
-  <label>Deuda:</label>
-  <input type="text" name="deuda" value="deuda"><br>
-  <input type="submit" value="Agregar cliente"><br>
-</form> 
-</div>
-<div id="Productos" class="tabcontent">
-  <h3>Productos</h3>
-  <sf:form action="${pageContext.request.contextPath}/Productos/guardar" method="post" commandName="producto">
+      
+        <sf:form action="${pageContext.request.contextPath}/Clientes/guardar" method="post" commandName="cliente">
 	<table>
 <!-- 	<tr> -->
 <!-- 			<td>Un campo fuera del objeto</td> -->
 <!-- 			<td><input name="fuera" type="text"/> </td> -->
 <!-- 		</tr> -->
 		<tr>
-			<td>Peso</td>
-			<td><sf:input path="peso"/> </td>
-		</tr>
-		<tr>
 			<td>Nombre</td>
-			<td><sf:input path="prod_nom"/> </td>
+			<td><sf:input path="nom_cli"/> </td>
 		</tr>
 		<tr>
-			<td>Stock</td>
-			<td><sf:input path="stock"/></td>
+			<td>Teléfono</td>
+			<td><sf:input path="tel_cli"/> </td>
+		</tr>
+		<tr>
+			<td>Deuda</td>
+			<td><sf:input path="deuda_cli"/></td>
 		</tr>
 		
-         <tr>
-			<td>Precio Compra</td>
-			<td><sf:input path="precio_c"/></td>
-		</tr>
-		<tr>
-			<td>Precio Venta</td>
-			<td><sf:input path="precio_v"/> </td>
-		</tr>
-		<tr>
 			<td></td>
 			<td><input type="submit" value="Guardar Cambios"/></td>
 		</tr>
 	</table>
 	</sf:form>
-</div> 
-
-
-<div id="mostrar">
-<div class="contenido">
-<table id="tablec">
-  <caption>Monthly savings</caption>
-  <tr>
-    <th>Month</th>
-    <th>Savings</th>
-    <th>Month</th>
-    <th>Savings</th>
-    <th>Month</th>
-    <th>Savings</th>
-  </tr>
-  <tr>
-    <td>January</td>
-    <td>$100</td>
-    <td>January</td>
-    <td>$100</td>
-    <td>January</td>
-    <td>$100</td>
-  </tr>
-  <tr>
-    <td>February</td>
-    <td>$50</td>
-     <td>February</td>
-    <td>$50</td>
-     <td>February</td>
-    <td>$50</td>
-  </tr>
-   <tr>
-    <td>February</td>
-    <td>$50</td>
-     <td>February</td>
-    <td>$50</td>
-     <td>February</td>
-    <td>$50</td>
-  </tr>
+	<table class="table">
+	<thead>
+    <tr>
+     <th></th>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Cargo</th>
+      <th scope="col">Fecha Creación</th>
+      <th></th>
+    </tr>
+  </thead>
+   <tbody>
+	<c:forEach items="${admins}" var="item">
+	 <tr>
+	 <td><a href='<c:url value="/admin/${item.idAd}/borrar"/>'>X</a></td>
+      <th scope="row"><c:out value="${item.idAd}"/></th>
+      <td><c:out value="${item.nombre}"/></td>
+      <td><c:out value="${item.cargo}"/></td>
+      <td><c:out value="${item.fechaCreacion}"/></td>
+      <td><a href='<c:url value="admin/${item.idAd}/actualizar"/>'>Actualizar</a></td>
+    </tr>
+    
+</c:forEach>
+  </tbody>
 </table>
+
+
+<c:out value="${ resultado }"/>
+
+
+
+
+
 
 </div>
 </div>

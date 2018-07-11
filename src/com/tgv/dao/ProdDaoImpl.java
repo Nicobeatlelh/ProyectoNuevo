@@ -16,7 +16,7 @@ import com.tgv.pojo.Producto;
 
 @Transactional
 @Repository
-public class ProdDaoImpl implements ProdDao {
+public class ProdDaoImpl implements InterfazGenerics<Producto> {
 
 	@Autowired
 	private SessionFactory sessionFactory;

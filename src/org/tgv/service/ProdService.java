@@ -9,14 +9,14 @@ import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tgv.dao.ProdDao;
+import com.tgv.dao.InterfazGenerics;
 import com.tgv.pojo.Producto;
 
 @Service
 public class ProdService {
 	
 	@Autowired
-	private ProdDao adminDao;
+	private InterfazGenerics adminDao;
 
 	public void save(Producto admin) {
 		admin.setFua(new Timestamp(new Date().getTime()));
@@ -30,7 +30,7 @@ public class ProdService {
 	
 	public Producto buscarXId(int id) {
 		
-		return adminDao.buscarXId(id);
+		return (Producto) adminDao.buscarXId(id);
 	}
 
 	public void actualizar(Producto adminForm) {
