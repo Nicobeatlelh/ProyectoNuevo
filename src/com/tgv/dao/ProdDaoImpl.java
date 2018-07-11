@@ -30,7 +30,7 @@ public class ProdDaoImpl extends ClassGenerics<Producto> {
 	@Override
 	public List<Producto> buscarTodos() {
 		List<Producto> admins = null;
-		 Query query = (Query) getSession().createQuery("from Admin");
+		 Query query = (Query) getSession().createQuery("from Producto");
 		    admins = query.list();
 		    return admins;    
 	}

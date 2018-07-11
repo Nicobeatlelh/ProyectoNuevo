@@ -89,20 +89,20 @@
      <th></th>
       <th scope="col">Id</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Cargo</th>
-      <th scope="col">Fecha Creación</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Deuda</th>
       <th></th>
     </tr>
   </thead>
    <tbody>
-	<c:forEach items="${admins}" var="item">
+	<c:forEach items="${cls}" var="cli">
 	 <tr>
-	 <td><a href='<c:url value="/admin/${item.idAd}/borrar"/>'>X</a></td>
-      <th scope="row"><c:out value="${item.idAd}"/></th>
-      <td><c:out value="${item.nombre}"/></td>
-      <td><c:out value="${item.cargo}"/></td>
-      <td><c:out value="${item.fechaCreacion}"/></td>
-      <td><a href='<c:url value="admin/${item.idAd}/actualizar"/>'>Actualizar</a></td>
+	 <td><a href='<c:url value="/admin/${cli.id_cli}/borrar"/>'>X</a></td>
+      <th scope="row"><c:out value="${cli.id_cli}"/></th>
+      <td><c:out value="${cli.nom_cli}"/></td>
+      <td><c:out value="${cli.tel_cli}"/></td>
+      <td><c:out value="${cli.deuda_cli}"/></td>
+      <td><a href='<c:url value="admin/${cli.id_cli}/actualizar"/>'>Actualizar</a></td>
     </tr>
     
 </c:forEach>

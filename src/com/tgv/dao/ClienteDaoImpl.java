@@ -2,6 +2,7 @@ package com.tgv.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tgv.pojo.Cliente;
+
 
 @Transactional
 @Repository
@@ -27,8 +29,11 @@ public class ClienteDaoImpl extends ClassGenerics<Cliente> {
 
 	@Override
 	public List<Cliente> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Cliente> cls = null;
+		 Query query = (Query) getSession().createQuery("from Clientes");
+		    cls = query.list();
+		    return cls; 
 	}
 
 

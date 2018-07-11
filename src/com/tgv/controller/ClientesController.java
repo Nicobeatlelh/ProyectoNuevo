@@ -1,5 +1,7 @@
 package com.tgv.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,8 @@ public class ClientesController {
 	@RequestMapping("/Clientes")
 	public String showClientes(Model model,  @ModelAttribute("resultado") String resultado) {
 		Cliente cliente = new Cliente();
+		List<Cliente> cls = clienteService.buscarTodos();
+		model.addAttribute("cls",cls);
 		model.addAttribute("cliente",cliente);
 		model.addAttribute("resultado", "Resultado desde Sesion");
 		return "Clientes";

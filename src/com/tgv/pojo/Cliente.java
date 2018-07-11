@@ -4,9 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name="Clientes")
 @Table(name="Clientes")
 public class Cliente {
 	
@@ -16,8 +17,6 @@ public class Cliente {
 	private String nom_cli;
 	private String tel_cli;
 	private int deuda_cli;
-	private int prod_pref_prod;
-	private String prod_pref_peso;
 	private String img_cli;
 	public int getId_cli() {
 		return id_cli;
@@ -43,18 +42,7 @@ public class Cliente {
 	public void setDeuda_cli(int deuda_cli) {
 		this.deuda_cli = deuda_cli;
 	}
-	public int getProd_pref_prod() {
-		return prod_pref_prod;
-	}
-	public void setProd_pref_prod(int prod_pref_prod) {
-		this.prod_pref_prod = prod_pref_prod;
-	}
-	public String getProd_pref_peso() {
-		return prod_pref_peso;
-	}
-	public void setProd_pref_peso(String prod_pref_peso) {
-		this.prod_pref_peso = prod_pref_peso;
-	}
+
 	public String getImg_cli() {
 		return img_cli;
 	}

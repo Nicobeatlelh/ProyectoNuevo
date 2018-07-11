@@ -2,6 +2,7 @@ package org.tgv.service;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,11 @@ public class ClienteService {
 	public void save(Cliente cli) {
 
 		clienteDao.save(cli);
+	}
+
+	public List<Cliente> buscarTodos() {
+
+		return clienteDao.buscarTodos();
 	}
 	
 	
