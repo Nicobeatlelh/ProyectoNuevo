@@ -48,8 +48,8 @@ public class ProdDaoImpl extends ClassGenerics<Producto> {
 	}
 
 	@Override
-	public void actualizar(int id) {
-		getSession().update(id);
+	public void actualizar(Producto prod) {
+
 		
 	}
 

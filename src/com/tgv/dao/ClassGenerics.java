@@ -30,8 +30,8 @@ public abstract class ClassGenerics<E> {
 	public List<E> buscarXNombre(String nombre){
 		return null;
 	}
-	public void actualizar(int id) {
-		
+	public void actualizar(E e) {
+
 	}
 	public void borrar(int id) {
 		

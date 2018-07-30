@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.tgv.service.ClienteService;
 
@@ -16,6 +17,7 @@ import com.tgv.pojo.Cliente;
 import com.tgv.pojo.Producto;
 
 @Controller
+@SessionAttributes("clienteObt")
 public class ClientesController {
 	
 	@Autowired
@@ -52,15 +54,18 @@ public class ClientesController {
 		return "redirect:/Clientes";
 	}
 	
+	@RequestMapping(value="/Clientes/actualizarF", method=RequestMethod.POST)
+	public String actualizarClientes(@ModelAttribute("clienteObt") Cliente clienteForm) {
+		clienteService.actualizar(clienteForm);
+		
+		return "redirect:/Clientes";
+	}
+	
 	@RequestMapping(value="clientes/{idAd}/actualizar")
 //	Se puede pasar un @RequestParam("fuera") String fuera para pasar un valor que no es parte del objeto(POJO)
-	public String actualizar(Model model, @PathVariable("idAd") int idAd) {
-		if(clienteService.buscarXId(idAd)!=null) {
-			Cliente cliente1 = clienteService.buscarXId(idAd);
-			model.addAttribute("cliente",cliente1);
-		}else {
-			model.addAttribute("resultado", "No se ha encontrado el Admin que se intenta actualizar");
-		}
+	public String actualizar(Model model, @PathVariable("idAd") int idAd, RedirectAttributes ra) {
+		Cliente cliente = clienteService.buscarXId(idAd);
+		model.addAttribute("clienteObt", cliente);
 		return "Clientes";
 	}
 	

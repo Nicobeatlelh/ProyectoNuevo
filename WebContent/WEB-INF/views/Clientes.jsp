@@ -58,9 +58,12 @@
                 <div class="row">  
      <!-- Comienza el main ************************* -->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      
-        <sf:form action="${pageContext.request.contextPath}/Clientes/guardar" method="post" commandName="cliente">
-	<table>
+  
+           <c:choose>
+         
+         <c:when test = "${clienteObt!=null}">
+         <sf:form action="${pageContext.request.contextPath}/Clientes/actualizarF" method="post" commandName="clienteObt">
+         <table>
 <!-- 	<tr> -->
 <!-- 			<td>Un campo fuera del objeto</td> -->
 <!-- 			<td><input name="fuera" type="text"/> </td> -->
@@ -86,6 +89,39 @@
 		</tr>
 	</table>
 	</sf:form>
+</c:when>
+<c:otherwise>
+  <sf:form action="${pageContext.request.contextPath}/Clientes/guardar" method="post" commandName="cliente">
+  <table>
+<!-- 	<tr> -->
+<!-- 			<td>Un campo fuera del objeto</td> -->
+<!-- 			<td><input name="fuera" type="text"/> </td> -->
+<!-- 		</tr> -->
+		<tr>
+		<td><sf:input type="hidden" path="id_cli"/></td>
+		</tr>
+		<tr>
+			<td>Nombre</td>
+			<td><sf:input path="nom_cli"/> </td>
+		</tr>
+		<tr>
+			<td>Teléfono</td>
+			<td><sf:input path="tel_cli"/> </td>
+		</tr>
+		<tr>
+			<td>Deuda</td>
+			<td><sf:input path="deuda_cli"/></td>
+		</tr>
+		
+			<td></td>
+			<td><input type="submit" value="Guardar Cambios"/></td>
+		</tr>
+	</table>
+	</sf:form>
+  </c:otherwise>
+  </c:choose>
+	
+      
 	<table class="table">
 	<thead>
     <tr>

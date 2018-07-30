@@ -34,9 +34,9 @@ public class ProdService {
 		return (Producto) adminDao.buscarXId(id);
 	}
 
-	public void actualizar(int id) {
+	public void actualizar(Producto prod) {
 
-		adminDao.actualizar(id);
+		adminDao.actualizar(prod);
 		
 	}
 

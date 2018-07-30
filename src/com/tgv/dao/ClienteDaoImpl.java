@@ -44,9 +44,9 @@ public class ClienteDaoImpl extends ClassGenerics<Cliente> {
 	}
 
 	@Override
-	public void actualizar(int id) {
-		getSession().update(id);
-		
+	public void actualizar(Cliente cli) {
+		Query query = (Query) getSession().createQuery("update Clientes set nom_cli = '"+cli.getNom_cli()+"', tel_cli = '"+cli.getTel_cli()+"', deuda_cli = "+cli.getDeuda_cli()+" where id_cli = "+cli.getId_cli());
+		query.executeUpdate();
 	}
 
 	@Override
@@ -61,8 +61,9 @@ public class ClienteDaoImpl extends ClassGenerics<Cliente> {
 	@Override
 	public Cliente buscarXId(int id) {
 		// TODO Auto-generated method stub
-		Query query = (Query) getSession().createQuery("from Clientes where id = "+id);
-		return null;
+		Cliente cli = null;
+		 cli = (Cliente) getSession().get(Cliente.class, id);
+		return cli;
 	}
 
 }

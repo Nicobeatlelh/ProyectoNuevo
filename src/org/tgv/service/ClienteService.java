@@ -30,11 +30,11 @@ public class ClienteService {
 
 	public Cliente buscarXId(int idAd) {
 		// TODO Auto-generated method stub
-		return null;
+		return clienteDao.buscarXId(idAd);
 	}
 	
-	public void actualizar(int id) {
-//		clienteDao.actualizar(cliente);
+	public void actualizar(Cliente cliente) {
+		clienteDao.actualizar(cliente);
 	}
 	public void borrar(int id) {
 		clienteDao.borrar(id);
