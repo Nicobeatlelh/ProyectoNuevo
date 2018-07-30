@@ -48,15 +48,15 @@ public class ProdDaoImpl extends ClassGenerics<Producto> {
 	}
 
 	@Override
-	public void actualizar(Producto admin) {
-		// TODO Auto-generated method stub
+	public void actualizar(int id) {
+		getSession().update(id);
 		
 	}
 
 	@Override
-	public void borrar(int idAd) {
+	public void borrar(int id) {
 		// TODO Auto-generated method stub
-		
+		getSession().delete(id);
 	}
 	
 	

@@ -10,5 +10,5 @@ public interface InterfazGenerics<E> {
 	public E buscarXId(int id);
 	public List<E> buscarXNombre(String nombre);
 	public void actualizar(E e);
-	public void borrar(int idAd);
+	public void borrar(E e);
 }

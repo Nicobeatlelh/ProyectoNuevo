@@ -33,8 +33,11 @@ public class ClienteService {
 		return null;
 	}
 	
-	public void actualizar(Cliente cliente) {
-		clienteDao.actualizar(cliente);
+	public void actualizar(int id) {
+//		clienteDao.actualizar(cliente);
+	}
+	public void borrar(int id) {
+		clienteDao.borrar(id);
 	}
 	
 	

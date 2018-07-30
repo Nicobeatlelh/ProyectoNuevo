@@ -34,15 +34,15 @@ public class ProdService {
 		return (Producto) adminDao.buscarXId(id);
 	}
 
-	public void actualizar(Producto adminForm) {
+	public void actualizar(int id) {
 
-		adminDao.actualizar(adminForm);
+		adminDao.actualizar(id);
 		
 	}
 
-	public void borrar(int idAd) {
+	public void borrar(int id) {
 
-		adminDao.borrar(idAd);
+		adminDao.borrar(id);
 	}
 
 }

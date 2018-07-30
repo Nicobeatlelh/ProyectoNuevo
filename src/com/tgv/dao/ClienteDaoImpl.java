@@ -44,20 +44,24 @@ public class ClienteDaoImpl extends ClassGenerics<Cliente> {
 	}
 
 	@Override
-	public void actualizar(Cliente e) {
-		// TODO Auto-generated method stub
+	public void actualizar(int id) {
+		getSession().update(id);
 		
 	}
 
 	@Override
-	public void borrar(int idAd) {
+	public void borrar(int id) {
 		// TODO Auto-generated method stub
+		Cliente cli = null;
+		 cli = (Cliente) getSession().load(Cliente.class, id);
+		getSession().delete(cli);
 		
 	}
 
 	@Override
 	public Cliente buscarXId(int id) {
 		// TODO Auto-generated method stub
+		Query query = (Query) getSession().createQuery("from Clientes where id = "+id);
 		return null;
 	}
 

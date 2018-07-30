@@ -63,6 +63,13 @@ public class ClientesController {
 		}
 		return "Clientes";
 	}
+	
+	@RequestMapping(value="clientes/{idAd}/borrar")
+//	Se puede pasar un @RequestParam("fuera") String fuera para pasar un valor que no es parte del objeto(POJO)
+	public String borrar(@ModelAttribute("cliente") Cliente clienteForm, Model model, @PathVariable("idAd") int idAd) {
+		clienteService.borrar(idAd);
+		return "redirect:/Clientes";
+	}
 }
 
 //@RequestMapping(value="/Productos/guardar", method=RequestMethod.POST)
