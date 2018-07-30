@@ -27,6 +27,15 @@ public class ClienteService {
 
 		return clienteDao.buscarTodos();
 	}
+
+	public Cliente buscarXId(int idAd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void actualizar(Cliente cliente) {
+		clienteDao.actualizar(cliente);
+	}
 	
 	
 }

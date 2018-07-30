@@ -89,17 +89,17 @@
 
 <div id="clientes" class="tabcontent">
   <h3>Clientes</h3>
-  <form action="ClientesServlet" method="post">
+  <sf:form action="${pageContext.request.contextPath}/Clientes/guardar" method="post" commandName="cliente">
   <label>Id:</label>
   <input type="text" name="id" value="id"><br>
   <label>Nombre: </label>
-  <input type="text" value="nombre" name="nombre"><br>
+  <sf:input path="nom_cli"/>
   <label>Teléfono:</label>
-  <input type="text" name="telefono" value="telefono"><br>
+  <sf:input path="tel_cli"/>
   <label>Deuda:</label>
-  <input type="text" name="deuda" value="deuda"><br>
+  <sf:input path="deuda_cli"/>
   <input type="submit" value="Agregar cliente"><br>
-</form> 
+</sf:form> 
 </div>
 <div id="Productos" class="tabcontent">
   <h3>Productos</h3>

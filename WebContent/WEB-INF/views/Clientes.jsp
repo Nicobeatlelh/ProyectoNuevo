@@ -66,6 +66,9 @@
 <!-- 			<td><input name="fuera" type="text"/> </td> -->
 <!-- 		</tr> -->
 		<tr>
+		<td><sf:input type="hidden" path="id_cli"/></td>
+		</tr>
+		<tr>
 			<td>Nombre</td>
 			<td><sf:input path="nom_cli"/> </td>
 		</tr>
@@ -97,12 +100,12 @@
    <tbody>
 	<c:forEach items="${cls}" var="cli">
 	 <tr>
-	 <td><a href='<c:url value="/admin/${cli.id_cli}/borrar"/>'>X</a></td>
+	 <td><a href='<c:url value="/clientes/${cli.id_cli}/borrar"/>'>X</a></td>
       <th scope="row"><c:out value="${cli.id_cli}"/></th>
       <td><c:out value="${cli.nom_cli}"/></td>
       <td><c:out value="${cli.tel_cli}"/></td>
       <td><c:out value="${cli.deuda_cli}"/></td>
-      <td><a href='<c:url value="admin/${cli.id_cli}/actualizar"/>'>Actualizar</a></td>
+      <td><a href='<c:url value="clientes/${cli.id_cli}/actualizar"/>'>Actualizar</a></td>
     </tr>
     
 </c:forEach>
