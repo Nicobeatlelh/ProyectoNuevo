@@ -1,5 +1,7 @@
 package com.tgv.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,10 @@ public class ProductosController {
 	@RequestMapping("/Productos")
 	public String showProductos(Model model, @ModelAttribute("resultado") String resultado) {
 		Producto producto = new Producto();
+		List<Producto> productos = prodService.buscarTodos();
 		model.addAttribute("producto", producto);
+		model.addAttribute("productos",productos);
+		System.out.println("Estos son los productos: "+productos);
 //		model.addAttribute("resultado", "Resultado desde Sesion");
 		return "Productos";
 	}
