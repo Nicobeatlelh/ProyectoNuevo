@@ -52,7 +52,7 @@
 
 <c:forEach items="${productos}" var="prod">
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
+  <img class="card-img-top imagen-carta" src="<c:out value="${prod.img_tp}"/>" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title"><c:out value="${prod.prod_nom}"/></h5>
   </div>
@@ -62,6 +62,7 @@
     <li class="list-group-item">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
     <li class="list-group-item">Precio de Venta: <c:out value="${prod.precio_v}"/></li>
     <li class="list-group-item">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
+    <li class="list-group-item">imagen: <c:out value="${prod.img_tp}"/></li>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link">Card link</a>

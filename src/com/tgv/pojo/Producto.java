@@ -3,15 +3,17 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="Producto")
 public class Producto implements Serializable {
-	
+		
 	@Id
 	private String prod_nom;
 	
@@ -22,7 +24,7 @@ public class Producto implements Serializable {
 	private float precio_c;
 	private float precio_v;
 	private Timestamp fua;
-	private String img_tp;
+	private String img_tp = "resources/img/no-disponible.png";
 	
 	
 	public String getPeso() {
