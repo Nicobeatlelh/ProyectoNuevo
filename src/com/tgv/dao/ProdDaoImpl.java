@@ -43,8 +43,10 @@ public class ProdDaoImpl extends ClassGenerics<Producto> {
 
 	@Override
 	public List<Producto> buscarXNombre(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Producto> productos = null;
+		Query query = (Query) getSession().createQuery("from Producto where prod_nom like '%"+nombre+"%'");
+		productos = query.list();
+		return productos;
 	}
 
 	@Override
@@ -63,6 +65,13 @@ public class ProdDaoImpl extends ClassGenerics<Producto> {
 	public void borrarPorNombreYPeso(String nom, String peso) {
 		Query query = (Query) getSession().createQuery("delete from Producto where prod_nom = '"+nom+"' AND peso = '"+peso+"'");
 		query.executeUpdate();
+	}
+	@Override
+	public Producto buscarPorNombreYPeso(String nom, String peso) {
+		Producto prod = null;
+		Query query = (Query) getSession().createQuery("from Producto where prod_nom = '"+nom+"' AND peso = '"+peso+"'");
+		prod = (Producto) query.uniqueResult();
+		return prod;
 	}
 	
 	

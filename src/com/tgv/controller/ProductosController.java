@@ -48,4 +48,20 @@ public class ProductosController {
 		prodService.borrarPorNombreYPeso(prodNom, peso);
 		return "redirect:/Productos";
 	}
+	
+	@RequestMapping(value="/Productos/{prodNom}/{peso}/actualizar")
+//	Se puede pasar un @RequestParam("fuera") String fuera para pasar un valor que no es parte del objeto(POJO)
+	public String actualizar(Model model, @PathVariable("prodNom") String prodNom, @PathVariable("peso") String peso) {
+		Producto prod = prodService.buscarPorNombreYPeso(prodNom, peso);
+		model.addAttribute("prodObt", prod);
+		return "Clientes";
+	}
+	
+	@RequestMapping(value="/Productos/{prodNom}/buscar")
+//	Se puede pasar un @RequestParam("fuera") String fuera para pasar un valor que no es parte del objeto(POJO)
+	public String buscarSimilares(Model model, @PathVariable("prodNom") String prodNom) {
+		List<Producto> prods = prodService.buscarPorNombre(prodNom);
+		model.addAttribute("prodsObt", prods);
+		return "detalle";
+	}
 }

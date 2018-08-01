@@ -48,5 +48,13 @@ public class ProdService {
 
 		adminDao.borrarPorNombreYPeso(nom, peso);
 	}
+	public Producto buscarPorNombreYPeso(String nom, String peso) {
+		return adminDao.buscarPorNombreYPeso(nom, peso);
+	}
+
+	public List<Producto> buscarPorNombre(String prodNom) {
+
+		return adminDao.buscarXNombre(prodNom);
+	}
 
 }

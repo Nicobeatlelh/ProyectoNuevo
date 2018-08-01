@@ -39,4 +39,8 @@ public abstract class ClassGenerics<E> {
 	public void borrarPorNombreYPeso(String nom, String peso) {
 		
 	}
+	
+	public E buscarPorNombreYPeso(String nom, String peso) {
+		return null;
+	}
 }

@@ -18,7 +18,7 @@
   <!-- Bootstrap Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
 
@@ -45,28 +45,29 @@
       <td><c:out value="${prod.precio_c}"/></td>
       <td><c:out value="${prod.precio_v}"/></td>
       <td><c:out value="${prod.fua}"/></td>
-      <td><a href='<c:url value="clientes/${prod.prod_nom}/actualizar"/>'>Actualizar</a></td>
+      <td><a href='<c:url value="clientes/${prod.prod_nom}/${prod.peso}/actualizar"/>'>Actualizar</a></td>
     </tr>
     
 </c:forEach>
 <div class="row">
 <c:forEach items="${productos}" var="prod">
-<div class="col-md-4">
-<div class="card" id="carta" style="width: 18rem;">
+<div class="col-md-4" style="margin-bottom: 2.5em">
+<div class="card" id="carta" >
   <img class="card-img-top imagen-carta" src="<c:out value="${prod.img_tp}"/>" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title"><c:out value="${prod.prod_nom}"/></h5>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Peso: <c:out value="${prod.peso}"/></li>
-    <li class="list-group-item">Stock: <c:out value="${prod.stock}"/></li>
-    <li class="list-group-item">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
-    <li class="list-group-item">Precio de Venta: <c:out value="${prod.precio_v}"/></li>
-    <li class="list-group-item">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
+    <li class="list-group-item">Precio de Venta: <c:out value="${prod.precio_v}"/></li> 
+    <li class="list-group-item ocultar">Stock: <c:out value="${prod.stock}"/></li>
+    <li class="list-group-item ocultar">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
+    <li class="list-group-item ocultar">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
   </ul>
   <div class="card-body">
     <a href='<c:url value="/Productos/${prod.prod_nom}/${prod.peso}/borrar"/>' class="card-link">Borrar Producto</a>
-    <a href="#" class="card-link">Another link</a>
+    <a class="verMas"  href="javascript:void(0);" class="card-link">Ver más</a>
+    <a href='<c:url value="/Productos/${prod.prod_nom}/buscar"/>' class="card-link">Buscar Similares</a>
   </div>
 </div>
 </div>
@@ -76,5 +77,31 @@
   </tbody>
 </table>
 
+
+
+<script>
+// var status = "less";
+// var link = document.getElementsByClassName("verMas");
+// link.addEventListener("click", showtext, false);
+// function showtext(e)
+// {
+// 	console.log(e);
+// 	 if (status == "less") {
+// 	      var els= e.target.offsetParent.getElementsByClassName("ocultar");
+// 	      for(i = 0;i<els.length;i++){
+// 	    	  els[i].style.display = "none";
+// 	      };
+// 	        e.target.innerText = "Ver Menos";
+// 	        status = "more";
+// 	    } else if (status == "more") {
+// 	    	var els= e.target.offsetParent.getElementsByClassName("ocultar");
+// 		      for(i = 0;i<els.length;i++){
+// 		    	  els[i].style.display = "block";
+// 		      };
+// 	        e.target.innerText = "ver Mas";
+// 	        status = "less"
+// 	    }
+// }
+</script>
 </body>
 </html>
