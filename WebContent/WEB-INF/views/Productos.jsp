@@ -49,9 +49,10 @@
     </tr>
     
 </c:forEach>
-
+<div class="row">
 <c:forEach items="${productos}" var="prod">
-<div class="card" style="width: 18rem;">
+<div class="col-md-4">
+<div class="card" id="carta" style="width: 18rem;">
   <img class="card-img-top imagen-carta" src="<c:out value="${prod.img_tp}"/>" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title"><c:out value="${prod.prod_nom}"/></h5>
@@ -69,7 +70,9 @@
     <a href="#" class="card-link">Another link</a>
   </div>
 </div>
+</div>
 </c:forEach>
+</div>
 
   </tbody>
 </table>
