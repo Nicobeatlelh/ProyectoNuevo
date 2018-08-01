@@ -38,7 +38,7 @@
    <tbody>
 	<c:forEach items="${productos}" var="prod">
 	 <tr>
-	 <td><a href='<c:url value="/clientes/${prod.prod_nom}/borrar"/>'>X</a></td>
+	 <td><a href='<c:url value="/Productos/${prod.prod_nom}/${prod.peso}/borrar"/>'>X</a></td>
 	 <th scope="row"><c:out value="${prod.prod_nom}"/></th>
       <th><c:out value="${prod.peso}"/></th>
       <td><c:out value="${prod.stock}"/></td>
@@ -63,10 +63,9 @@
     <li class="list-group-item">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
     <li class="list-group-item">Precio de Venta: <c:out value="${prod.precio_v}"/></li>
     <li class="list-group-item">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
-    <li class="list-group-item">imagen: <c:out value="${prod.img_tp}"/></li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
+    <a href='<c:url value="/Productos/${prod.prod_nom}/${prod.peso}/borrar"/>' class="card-link">Borrar Producto</a>
     <a href="#" class="card-link">Another link</a>
   </div>
 </div>

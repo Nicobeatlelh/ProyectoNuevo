@@ -44,5 +44,9 @@ public class ProdService {
 
 		adminDao.borrar(id);
 	}
+	public void borrarPorNombreYPeso(String nom, String peso) {
+
+		adminDao.borrarPorNombreYPeso(nom, peso);
+	}
 
 }

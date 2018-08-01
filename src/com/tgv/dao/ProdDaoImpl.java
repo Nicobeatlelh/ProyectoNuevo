@@ -59,6 +59,12 @@ public class ProdDaoImpl extends ClassGenerics<Producto> {
 		getSession().delete(id);
 	}
 	
+	@Override
+	public void borrarPorNombreYPeso(String nom, String peso) {
+		Query query = (Query) getSession().createQuery("delete from Producto where prod_nom = '"+nom+"' AND peso = '"+peso+"'");
+		query.executeUpdate();
+	}
+	
 	
 	
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,6 +38,14 @@ public class ProductosController {
 		if(adminForm.getProd_nom()!="") {
 			prodService.save(adminForm);
 		}
+		return "redirect:/Productos";
+	}
+	
+	@RequestMapping(value="/Productos/{prodNom}/{peso}/borrar")
+//	Se puede pasar un @RequestParam("fuera") String fuera para pasar un valor que no es parte del objeto(POJO)
+	public String borrar(@ModelAttribute("producto") Producto prodForm, Model model, @PathVariable("prodNom") String prodNom, @PathVariable("peso") String peso) {
+		System.out.println("Estoy borrando un producto");
+		prodService.borrarPorNombreYPeso(prodNom, peso);
 		return "redirect:/Productos";
 	}
 }

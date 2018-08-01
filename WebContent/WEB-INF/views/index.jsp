@@ -131,6 +131,11 @@
 			<td><sf:input path="precio_v"/> </td>
 		</tr>
 		<tr>
+		<tr>
+			<td>Ruta de imagen</td>
+			<td><sf:input path="img_tp"/> </td>
+		</tr>
+		<tr>
 			<td></td>
 			<td><input type="submit" value="Guardar Cambios"/></td>
 		</tr>

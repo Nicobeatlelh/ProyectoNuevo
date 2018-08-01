@@ -36,4 +36,7 @@ public abstract class ClassGenerics<E> {
 	public void borrar(int id) {
 		
 	}
+	public void borrarPorNombreYPeso(String nom, String peso) {
+		
+	}
 }
