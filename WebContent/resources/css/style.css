@@ -74,7 +74,7 @@ text-align: left;
 }
 
 .principal{
-    margin-top:50px;
+    margin-top:25px;
 }
 .height{
 	height: 250px;
@@ -93,7 +93,7 @@ marg-top{
 	width:10px;
 }
 .imagen-carta{
-	height: 50px;
+	height: 200px;
 }
 .presentacion{
 	margin-bottom: 3em;
@@ -104,4 +104,6 @@ marg-top{
 .lista {
 	background-color: white;
 }
-
+#verTabla{
+	margin-bottom:1em;
+}

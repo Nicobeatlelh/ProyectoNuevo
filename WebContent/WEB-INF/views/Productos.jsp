@@ -24,7 +24,7 @@
 
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
-<body>
+<body style="background-color:#D3D3D3">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
@@ -62,8 +62,36 @@
     
   </div>
 </nav>
-    
-	<table class="table">
+   <div class="container-fluid principal" id="productos">
+	
+<div class="row">
+<c:forEach items="${productos}" var="prod">
+<div class="col-md-4" style="margin-bottom: 2.5em">
+<div class="card" id="carta" >
+  <img class="card-img-top imagen-carta" src="<c:out value="${prod.img_tp}"/>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><c:out value="${prod.prod_nom}"/></h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Peso: <c:out value="${prod.peso}"/></li>
+    <li class="list-group-item">Precio de Venta: <c:out value="${prod.precio_v}"/></li> 
+    <li class="list-group-item ">Stock: <c:out value="${prod.stock}"/></li>
+    <li class="list-group-item ">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
+    <li class="list-group-item ">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
+  </ul>
+  <div>
+  <ol class="breadcrumb" style="background-color:white;margin-left:20px;">
+   <li class="breadcrumb-item"> <a href='<c:url value="/Productos/${prod.prod_nom}/${prod.peso}/borrar"/>' class="card-link">Borrar Producto</a></li>
+   <li class="breadcrumb-item"> <a href="javascript:void(0);" class="card-link">Ver más</a></li>
+   <li class="breadcrumb-item"> <a href='<c:url value="/Productos/${prod.prod_nom}/buscar"/>' class="card-link">Buscar Similares</a></li>
+    </ol>
+  </div>
+</div>
+</div>
+</c:forEach>
+</div>
+<a class="btn btn-primary btn-lg active" id="verTabla" data-toggle="collapse" data-target="#tabla" href="javascript:void(0)">Ver en tabla</a>
+<table class="table collapse" id="tabla">
 	<thead>
     <tr>
      <th></th>
@@ -90,37 +118,11 @@
     </tr>
     
 </c:forEach>
-<div class="row">
-<c:forEach items="${productos}" var="prod">
-<div class="col-md-4" style="margin-bottom: 2.5em">
-<div class="card" id="carta" >
-  <img class="card-img-top imagen-carta" src="<c:out value="${prod.img_tp}"/>" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><c:out value="${prod.prod_nom}"/></h5>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Peso: <c:out value="${prod.peso}"/></li>
-    <li class="list-group-item">Precio de Venta: <c:out value="${prod.precio_v}"/></li> 
-    <li class="list-group-item ocultar">Stock: <c:out value="${prod.stock}"/></li>
-    <li class="list-group-item ocultar">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
-    <li class="list-group-item ocultar">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
-  </ul>
-  <div>
-  <ol class="breadcrumb" style="background-color:white;margin-left:20px;">
-   <li class="breadcrumb-item"> <a href='<c:url value="/Productos/${prod.prod_nom}/${prod.peso}/borrar"/>' class="card-link">Borrar Producto</a></li>
-   <li class="breadcrumb-item"> <a class="verMas"  href="javascript:void(0);" class="card-link">Ver más</a></li>
-   <li class="breadcrumb-item"> <a href='<c:url value="/Productos/${prod.prod_nom}/buscar"/>' class="card-link">Buscar Similares</a></li>
-    </ol>
-  </div>
-</div>
-</div>
-</c:forEach>
-</div>
 
   </tbody>
 </table>
 
-
+</div> 
 
 <script>
 $( "#search" ).click(function() {
