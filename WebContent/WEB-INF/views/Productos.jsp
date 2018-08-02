@@ -56,10 +56,10 @@
                             Clientes</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    
+      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search">
+      <a class="btn btn-outline-success my-2 my-sm-0" id="search" type="submit">Search</a>
+    
   </div>
 </nav>
     
@@ -123,6 +123,13 @@
 
 
 <script>
+$( "#search" ).click(function() {
+	var nombre = $('input[name="search"]').val();
+	window.location.href = 'Productos/'+nombre+'/buscar';
+    //var a = $('input[name="inputbox"]').val();
+    //alert(a);
+//     $( "#myForm" ).submit();
+    });
 // var status = "less";
 // var link = document.getElementsByClassName("verMas");
 // link.addEventListener("click", showtext, false);
