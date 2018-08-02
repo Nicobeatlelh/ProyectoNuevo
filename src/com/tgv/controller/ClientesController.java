@@ -56,9 +56,9 @@ public class ClientesController {
 	}
 	
 	@RequestMapping(value="/Clientes/actualizarF", method=RequestMethod.POST)
-	public String actualizarClientes(@ModelAttribute("clienteObt") Cliente clienteForm) {
+	public String actualizarClientes(@ModelAttribute("clienteObt") Cliente clienteForm, SessionStatus st) {
 		clienteService.actualizar(clienteForm);
-		
+		st.setComplete();
 		return "redirect:/Clientes";
 	}
 	
