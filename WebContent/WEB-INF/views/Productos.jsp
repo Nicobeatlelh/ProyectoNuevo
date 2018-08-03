@@ -74,9 +74,9 @@
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Peso: <c:out value="${prod.peso}"/></li>
-    <li class="list-group-item">Precio de Venta: <c:out value="${prod.precio_v}"/></li> 
+    <li class="list-group-item">Precio de Venta: <b>$<c:out value="${prod.precio_v}"/></b></li> 
     <li class="list-group-item ocultar">Stock: <c:out value="${prod.stock}"/></li>
-    <li class="list-group-item ocultar">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
+    <li class="list-group-item ocultar">Precio de Compra: $<c:out value="${prod.precio_c}"/></li>
     <li class="list-group-item ocultar ">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
   </ul>
   <div>

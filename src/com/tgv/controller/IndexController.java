@@ -53,6 +53,12 @@ public class IndexController {
 		return "acercade";
 	}
 	
+	@RequestMapping("/Factura")
+	public String showFactura() {
+
+		return "Fac";
+	}
+	
 	
 	
 }

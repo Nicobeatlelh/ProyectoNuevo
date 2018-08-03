@@ -27,6 +27,11 @@ public class ClienteService {
 
 		return clienteDao.buscarTodos();
 	}
+	
+	public List<Cliente> buscarPorNombre(String nombre) {
+
+		return clienteDao.buscarXNombre(nombre);
+	}
 
 	public Cliente buscarXId(int idAd) {
 		// TODO Auto-generated method stub

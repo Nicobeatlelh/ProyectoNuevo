@@ -90,18 +90,6 @@
 			<div class="row align-items-end">
 				<div class="col-9">
 					<h3>Factura</h3>
-					<%
-						ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_config.xml");
-						InterfazGenerics clientdao = (InterfazGenerics) applicationContext.getBean("clientDao");
-						System.out.println(request.getParameter("esFactura"));
-						String nombre = request.getParameter("nombre");
-						String id = request.getParameter("id");
-						InterfazGenerics proddao = (InterfazGenerics) applicationContext.getBean("prodDao");
-						String nombreProd = request.getParameter("nombreProd");
-						String pesoProd = request.getParameter("pesoProd");
-						System.out.println(nombreProd);
-						System.out.println(pesoProd);
-					%>
 				</div>
 				<div class="col" id="date"></div>
 			</div>
@@ -120,31 +108,16 @@
 						Id: <span id="idCli" contentEditable="true">Id</span>
 					</p>
 
-					<%
-						if ((id != null) && (id != "")) {
-							System.out.println(id);
-							try {
-								Cliente admin = (Cliente) clientdao.buscarXId(Integer.parseInt(id));
-					%>
 					<p>
-						Nombre: <span> <%=admin.getNom_cli()%></span>
+						Nombre: <span> </span>
 					</p>
 					<p>CUIT:</p>
 					<p>
-						Teléfono: <span> <%=admin.getTel_cli()%></span>
+						Teléfono: <span></span>
 					</p>
 					<p>
 						Dirección:</span>
-					</p>
-					<%
-						} catch (CannotGetJdbcConnectionException ex) {
-								ex.printStackTrace();
-							} catch (DataAccessException e) {
-								e.printStackTrace();
-							}
-							System.out.println("terminado if");
-						}
-					%></p>
+					</p></p>
 
 				</div>
 				<div class="col offset-1">Fecha</div>
@@ -187,35 +160,21 @@
 			</thead>
 			<tbody>
 				<tr class="item-row">
-					
-
-<%
-						if ((nombreProd != null) && (nombreProd != "") && (pesoProd != null) && (pesoProd != "")) {
-							try {
-								Producto prod = (Producto) proddao.buscarXNombreYPeso(nombreProd, pesoProd); %>
-								<th scope="row"><span id="nomProd" contentEditable="true"><%= prod.getProd_nom() %></span></th>
-					<td><span id="pesoProd" contentEditable="true"><%= prod.getPeso() %></span></td>
+			
+								<th scope="row"><span id="nomProd" contentEditable="true"></span></th>
+					<td><span id="pesoProd" contentEditable="true"></span></td>
 					<td></td>
-					<td><%=prod.getStock()%></td>
-					<td><textarea class="cost"><%=prod.getPrecio_v()%> </textarea>
+					<td></td>
+					<td><textarea class="cost"> </textarea>
 					</td>
-					<% } catch (CannotGetJdbcConnectionException ex) {
-								ex.printStackTrace();
-							} catch (DataAccessException e) {
-								e.printStackTrace();
-							}
-							System.out.println("terminado if");
-						}else{
-							%>
+				
 							<th scope="row"><span id="nomProd" contentEditable="true">nom</span></th>
 					<td><span id="pesoProd" contentEditable="true">peso</span></td>
 					<td></td>
 					<td></td>
 					<td><textarea class="cost"></textarea>
 					</td>
-							<%
-						}
-					%>
+					
 
 					<td><textarea class="qty"> </textarea></td>
 					<td class="price"></td>

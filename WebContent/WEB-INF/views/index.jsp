@@ -16,7 +16,7 @@
 
 <title>Es el index</title>
 </head>
-<body>
+<body style="background-color:#D3D3D3">
 <!-- 	<h1>Estoy en el index.jsp</h1> -->
 <%-- 	<a href='<c:url value="/about"/>'>Acerca de</a><br/> --%>
 <%-- 	<a href='<c:url value="/admin"/>'>Gestionar Administradores</a> --%>
@@ -73,18 +73,12 @@
             
 <!-- Tab links -->
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'crear-factura')">Crear factura</button>
   <button class="tablinks" onclick="openCity(event, 'proveedores')">Proveedores</button>
   <button class="tablinks" onclick="openCity(event, 'clientes')">Clientes</button>
   <button class="tablinks" onclick="openCity(event, 'Productos')">Productos</button>
 </div>
 
 <!-- Tab content -->
-<div id="crear-factura" class="tabcontent">
-  <h3>Creación factura</h3>
-  <p>London is the capital city of England.</p>
-</div>
-
 <div id="proveedores" class="tabcontent">
   <h3>Proveedores</h3>
   <form action="TomarDatosProveedores" method="get">
@@ -99,15 +93,13 @@
 <div id="clientes" class="tabcontent">
   <h3>Clientes</h3>
   <sf:form action="${pageContext.request.contextPath}/Clientes/guardar" method="post" commandName="cliente">
-  <label>Id:</label>
-  <input type="text" name="id" value="id"><br>
   <label>Nombre: </label>
-  <sf:input path="nom_cli"/>
+  <sf:input cssClass="form-control" path="nom_cli"/>
   <label>Teléfono:</label>
-  <sf:input path="tel_cli"/>
+  <sf:input cssClass="form-control" path="tel_cli"/>
   <label>Deuda:</label>
-  <sf:input path="deuda_cli"/>
-  <input type="submit" value="Agregar cliente"><br>
+  <sf:input cssClass="form-control" path="deuda_cli"/>
+  <input class="btn btn-primary" type="submit" value="Agregar cliente"><br>
 </sf:form> 
 </div>
 <div id="Productos" class="tabcontent">
@@ -146,13 +138,70 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td><input cssClass="btn btn-primary" type="submit" value="Guardar Cambios"/></td>
+			<td><input class="btn btn-primary" type="submit" value="Guardar Cambios"/></td>
 		</tr>
 	</table>
 	</sf:form>
 </div> 
 
+<a class="btn btn-primary btn-lg active" id="crearFactura" data-toggle="collapse" data-target="#factura" href="javascript:void(0)">Crear Factura</a>
 
+<table class="table collapse" id="factura">
+			<thead>
+				<tr class="item-row">
+					<th scope="col">Nombre Producto</th>
+					<th scope="col">Peso</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Precio-Unit</th>
+					<th scope="col">Cantidad</th>
+					<th scope="col">Precio-Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="item-row">			
+							<th scope="row"><span id="nomProd" contentEditable="true">nom</span></th>
+					<td><span id="pesoProd" contentEditable="true">peso</span></td>
+					<td></td>
+					<td><textarea class="cost"></textarea></td>
+					
+
+					<td><textarea class="qty"> </textarea></td>
+					<td class="price"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>Subtotal</td>
+					<td id="subtotal"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>Total</td>
+					<td id="total"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>Dinero Pagado</td>
+					<td><textarea id="paid"></textarea></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>Deuda</td>
+					<td class="due"></td>
+				</tr>
+			</tbody>
+		</table>
 <!-- <div id="mostrar"> -->
 <!-- <div class="contenido"> -->
 <!-- <table id="tablec"> -->
@@ -197,6 +246,6 @@
             </main> <!-- termina el main -->
 
         </div>
-	
+	<script type="text/javascript" src="resources/js/example2.js"></script>
 </body>
 </html>

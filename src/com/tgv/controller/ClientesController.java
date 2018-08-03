@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.tgv.service.ClienteService;
 
 import com.tgv.pojo.Cliente;
-import com.tgv.pojo.Producto;
 
 @Controller
 @SessionAttributes("clienteObt")
@@ -75,6 +74,14 @@ public class ClientesController {
 	public String borrar(@ModelAttribute("cliente") Cliente clienteForm, Model model, @PathVariable("idAd") int idAd) {
 		clienteService.borrar(idAd);
 		return "redirect:/Clientes";
+	}
+	
+	@RequestMapping(value="/Clientes/{clienteNom}/buscar")
+//	Se puede pasar un @RequestParam("fuera") String fuera para pasar un valor que no es parte del objeto(POJO)
+	public String buscarSimilares(Model model, @PathVariable("clienteNom") String clienteNom) {
+		List<Cliente> clientes = clienteService.buscarPorNombre(clienteNom);
+		model.addAttribute("clientesObt", clientes);
+		return "detalleClientes";
 	}
 }
 

@@ -58,8 +58,8 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search">
+      <a class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search">Search</a>
     </form>
   </div>
 </nav>
@@ -168,5 +168,14 @@
 </div>
             </div>
             </main> <!-- termina el main -->
+            <script>
+            $( "#search" ).click(function() {
+            	var nombre = $('input[name="search"]').val();
+            	window.location.href = 'Clientes/'+nombre+'/buscar';
+                //var a = $('input[name="inputbox"]').val();
+                //alert(a);
+//                 $( "#myForm" ).submit();
+                });
+            </script>
 </body>
 </html>

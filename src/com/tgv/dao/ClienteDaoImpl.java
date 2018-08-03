@@ -39,8 +39,10 @@ public class ClienteDaoImpl extends ClassGenerics<Cliente> {
 
 	@Override
 	public List<Cliente> buscarXNombre(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Cliente> clientes = null;
+		Query query = (Query) getSession().createQuery("from Clientes where nom_cli like '%"+nombre+"%'");
+		clientes = query.list();
+		return clientes;
 	}
 
 	@Override
