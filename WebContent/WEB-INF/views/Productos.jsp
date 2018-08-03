@@ -75,14 +75,14 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Peso: <c:out value="${prod.peso}"/></li>
     <li class="list-group-item">Precio de Venta: <c:out value="${prod.precio_v}"/></li> 
-    <li class="list-group-item ">Stock: <c:out value="${prod.stock}"/></li>
-    <li class="list-group-item ">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
-    <li class="list-group-item ">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
+    <li class="list-group-item ocultar">Stock: <c:out value="${prod.stock}"/></li>
+    <li class="list-group-item ocultar">Precio de Compra: <c:out value="${prod.precio_c}"/></li>
+    <li class="list-group-item ocultar ">Fecha de última adquisición: <c:out value="${prod.fua}"/></li>
   </ul>
   <div>
   <ol class="breadcrumb" style="background-color:white;margin-left:20px;">
    <li class="breadcrumb-item"> <a href='<c:url value="/Productos/${prod.prod_nom}/${prod.peso}/borrar"/>' class="card-link">Borrar Producto</a></li>
-   <li class="breadcrumb-item"> <a href="javascript:void(0);" class="card-link">Ver más</a></li>
+   <li class="breadcrumb-item"> <a href="javascript:void(0);" class="card-link verMas">Ver más</a></li>
    <li class="breadcrumb-item"> <a href='<c:url value="/Productos/${prod.prod_nom}/buscar"/>' class="card-link">Buscar Similares</a></li>
     </ol>
   </div>
@@ -132,7 +132,20 @@ $( "#search" ).click(function() {
     //alert(a);
 //     $( "#myForm" ).submit();
     });
-// var status = "less";
+$('.ocultar').each(function(){
+	$(this).hide();
+})
+$('.verMas').each(function(){
+	$(this).click(function(){
+		var text = $(this).text();
+		if(text == "Ver más"){
+			$(this).text("Ver menos");
+		}else{
+			$(this).text("Ver más");
+		}
+		$(this).offsetParent().children('ul').children('.ocultar').toggle();
+	})
+})
 // var link = document.getElementsByClassName("verMas");
 // link.addEventListener("click", showtext, false);
 // function showtext(e)
