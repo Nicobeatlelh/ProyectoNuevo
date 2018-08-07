@@ -108,10 +108,14 @@
 
 					<h6>Datos del Cliente</h6>
 					<p>
-						Id: <span id="idCli" contentEditable="true"><c:choose>
+						Id: <span id="idCli" contentEditable="true">
+						<c:choose>
   <c:when test="${clienteObt!=null}">
 <c:out value = "${clienteObt.id_cli}"/>
-  </c:when><c:otherwise>Id</c:otherwise></c:choose></span>
+  </c:when>
+  <c:otherwise>Id</c:otherwise>
+  </c:choose>
+  </span>
 					</p>
 
 					<p>
@@ -133,7 +137,6 @@
 				<tr class="item-row">
 					<th scope="col">Nombre Producto</th>
 					<th scope="col">Peso</th>
-					<th scope="col">Presentación</th>
 					<th scope="col">Stock</th>
 					<th scope="col">Precio-Unit</th>
 					<th scope="col">Cantidad</th>
@@ -143,19 +146,29 @@
 			<tbody>
 				<tr class="item-row">
 			
-								<th scope="row"><span id="nomProd" contentEditable="true"></span></th>
-					<td><span id="pesoProd" contentEditable="true"></span></td>
-					<td></td>
-					<td></td>
-					<td><textarea class="cost"> </textarea>	</td>
+								<th scope="row"><span id="nomProd" contentEditable="true">
+	<c:choose>
+  <c:when test="${prodObt!=null}">
+<c:out value = "${prodObt.prod_nom}"/>
+  </c:when>
+  <c:otherwise>Inserte nombre</c:otherwise>
+  </c:choose></span></th>
+					<td><span id="pesoProd" contentEditable="true">	<c:choose>
+  <c:when test="${prodObt!=null}">
+<c:out value = "${prodObt.peso}"/>
+  </c:when>
+  <c:otherwise>Inserte peso</c:otherwise>
+  </c:choose></span></td>
+					<td><c:out value = "${prodObt.stock}"/></td>
+					<td><textarea class="cost">	<c:out value = "${prodObt.precio_v}"/></textarea></td>
 					
 
 					<td><textarea class="qty"> </textarea></td>
 					<td class="price"></td>
 				</tr>
+				
 				<tr>
 					<th></th>
-					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -167,7 +180,6 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td></td>
 					<td>Total</td>
 					<td id="total"></td>
 				</tr>
@@ -176,13 +188,11 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td></td>
 					<td>Dinero Pagado</td>
 					<td><textarea id="paid"></textarea></td>
 				</tr>
 				<tr>
 					<th></th>
-					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>

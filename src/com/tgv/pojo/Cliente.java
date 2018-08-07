@@ -1,9 +1,12 @@
 package com.tgv.pojo;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,6 +21,9 @@ public class Cliente {
 	private String tel_cli;
 	private int deuda_cli;
 	private String img_cli;
+	@OneToMany(mappedBy="cliente")
+	private Set<Factura> facturas;
+	
 	public int getId_cli() {
 		return id_cli;
 	}

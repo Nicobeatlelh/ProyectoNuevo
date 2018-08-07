@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.tgv.service.ProdService;
 
 import com.tgv.pojo.Producto;
 
 @Controller
+@SessionAttributes("prodObt")
 public class ProductosController {
 	
 	@Autowired
@@ -63,5 +65,12 @@ public class ProductosController {
 		List<Producto> prods = prodService.buscarPorNombre(prodNom);
 		model.addAttribute("prodsObt", prods);
 		return "detalle";
+	}
+	
+	@RequestMapping(value="/Productos/{prodNom}/{peso}/buscar")
+	public String buscarProducto(Model model, @PathVariable("prodNom") String prodNom, @PathVariable("peso") String peso) {
+		Producto prod = prodService.buscarPorNombreYPeso(prodNom, peso);
+		model.addAttribute("prodObt", prod);
+		return "redirect:/factura";
 	}
 }
