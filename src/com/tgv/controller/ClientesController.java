@@ -83,6 +83,18 @@ public class ClientesController {
 		model.addAttribute("clientesObt", clientes);
 		return "detalleClientes";
 	}
+	
+	@RequestMapping(value="/Clientes/{id}/buscarId")
+//	Se puede pasar un @RequestParam("fuera") String fuera para pasar un valor que no es parte del objeto(POJO)
+	public String buscarXId(Model model, @PathVariable("id") int clienteId) {
+		System.out.println("Este es el id: "+clienteId);
+		Cliente cli = clienteService.buscarXId(clienteId);
+		System.out.println("Este es el objeto");
+		System.out.println(cli.toString());
+		System.out.println("-------------");
+		model.addAttribute("clienteObt", cli);
+		return "redirect:/factura";
+	}
 }
 
 //@RequestMapping(value="/Productos/guardar", method=RequestMethod.POST)

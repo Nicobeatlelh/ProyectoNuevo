@@ -21,9 +21,13 @@ $(document).ready(function(){
 				$('#idCliForm').html(parseInt(palabra));
 	
 		}else{
-			$('#idCliForm').val(parseInt(palabra));
-			$('#enviar').trigger('click');	
+//			$('#idCliForm').val(parseInt(palabra));
+//			$('#enviar').trigger('click');	
+			window.location.href = 'Clientes/'+parseInt(palabra)+'/buscarId';
 		}
+	});
+	$("#crearFac").click(function(){
+		window.location.href = 'Clientes/'+parseInt($('#idCli').html())+'';
 	});
 	$( "#nomProd" ).keypress(function( event ) {
 		if(event.keyCode!=13){

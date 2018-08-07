@@ -9,6 +9,9 @@
 	import="org.springframework.jdbc.CannotGetJdbcConnectionException"%>
 <%@ page import="org.springframework.dao.DataAccessException"%>
 
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +25,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
 	integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 <title>Factura</title>
 </head>
 <body>
@@ -105,16 +108,16 @@
 
 					<h6>Datos del Cliente</h6>
 					<p>
-						Id: <span id="idCli" contentEditable="true">Id</span>
+						Id: <span id="idCli" contentEditable="true"><c:choose>
+  <c:when test="${clienteObt!=null}">
+<c:out value = "${clienteObt.id_cli}"/>
+  </c:when><c:otherwise>Id</c:otherwise></c:choose></span>
 					</p>
 
 					<p>
-						Nombre: <span> </span>
+						Nombre: <span><c:out value = "${clienteObt.nom_cli}"/></span>
 					</p>
-					<p>CUIT:</p>
-					<p>
-						Teléfono: <span></span>
-					</p>
+					<p>Teléfono: <span> <c:out value = "${clienteObt.tel_cli}"/></span></p>
 					<p>
 						Dirección:</span>
 					</p></p>
@@ -124,27 +127,6 @@
 			</div>
 		</div>
 
-		<form id="formulario" action="ClientesServletBusqueda" method="post">
-			<input type="hidden" name="id" id="idCliForm"> <input
-				type="hidden" name="nombre"> <input type="hidden"
-				name="esFactura" value="esFactura">
-			<!--   <input type="hidden" name="telefonoCliente"> -->
-			<!--   <input type="hidden" name="deudaCliente"> -->
-			<!--   <input type="hidden" name="prod_pref_prod"> -->
-			<!--   <input type="hidden" name="prod_pref_peso"> -->
-			<!--   <input type="hidden" name="imgCliente"> -->
-			<input id="enviar" type="submit" value="Submit">
-		</form>
-		<form id="formulario" action="ProductosServletBusqueda" method="post">
-			<input type="hidden" name="pesoProd" id="pesoProdForm"> <input
-				type="hidden" name="nombreProd" id="nomProdForm">
-			<!--   <input type="hidden" name="telefonoCliente"> -->
-			<!--   <input type="hidden" name="deudaCliente"> -->
-			<!--   <input type="hidden" name="prod_pref_prod"> -->
-			<!--   <input type="hidden" name="prod_pref_peso"> -->
-			<!--   <input type="hidden" name="imgCliente"> -->
-			<input id="enviarProd" type="submit" value="Submit">
-		</form>
 		<button id="addrow">Agregar Fila</button>
 		<table class="table">
 			<thead>
@@ -165,15 +147,7 @@
 					<td><span id="pesoProd" contentEditable="true"></span></td>
 					<td></td>
 					<td></td>
-					<td><textarea class="cost"> </textarea>
-					</td>
-				
-							<th scope="row"><span id="nomProd" contentEditable="true">nom</span></th>
-					<td><span id="pesoProd" contentEditable="true">peso</span></td>
-					<td></td>
-					<td></td>
-					<td><textarea class="cost"></textarea>
-					</td>
+					<td><textarea class="cost"> </textarea>	</td>
 					
 
 					<td><textarea class="qty"> </textarea></td>
@@ -217,8 +191,9 @@
 				</tr>
 			</tbody>
 		</table>
+		<a id="crearFac" href="#">Crear Factura</a>
 	</div>
-	<script src="js/jquery.js" type="text/javascript"></script>
-	<script type="text/javascript" src="js/example2.js"></script>
+	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="resources/js/example2.js"></script>
 </body>
 </html>

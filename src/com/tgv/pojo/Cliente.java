@@ -52,6 +52,11 @@ public class Cliente {
 	public Cliente() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Cliente [id_cli=" + id_cli + ", nom_cli=" + nom_cli + ", tel_cli=" + tel_cli + ", deuda_cli="
+				+ deuda_cli + ", img_cli=" + img_cli + "]";
+	}
 	
 	
 	
