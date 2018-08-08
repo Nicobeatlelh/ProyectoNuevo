@@ -83,10 +83,10 @@
   <h3>Proveedores</h3>
   <form action="TomarDatosProveedores" method="get">
   <label>Nombre: </label>
-  <input type="text" value="nombre" name="nombre"><br>
+  <input class="form-control" type="text" value="nombre" name="nombre"><br>
   <label>Teléfono</label>
-  <input type="text" name="telefono" value="telefono"><br><br>
-  <input type="submit" value="Submit">
+  <input  class="form-control" type="text" name="telefono" value="telefono"><br><br>
+  <input class="btn btn-primary" type="submit" value="Submit">
 </form> 
 </div>
 
@@ -105,42 +105,22 @@
 <div id="Productos" class="tabcontent">
   <h3>Productos</h3>
   <sf:form action="${pageContext.request.contextPath}/Productos/guardar" method="post" commandName="producto">
-	<table class="table">
-<!-- 	<tr> -->
-<!-- 			<td>Un campo fuera del objeto</td> -->
-<!-- 			<td><input name="fuera" type="text"/> </td> -->
-<!-- 		</tr> -->
-		<tr>
-			<td>Peso</td>
-			<td><sf:input cssClass="form-control" path="peso"/> </td>
-		</tr>
-		<tr>
-			<td>Nombre</td>
-			<td><sf:input cssClass="form-control" path="prod_nom"/> </td>
-		</tr>
-		<tr>
-			<td>Stock</td>
-			<td><sf:input cssClass="form-control" path="stock"/></td>
-		</tr>
+	<label>Peso </label>
+	<sf:input cssClass="form-control" path="peso"/>
+		<label>Nombre </label>
+			<sf:input cssClass="form-control" path="prod_nom"/>
 		
-         <tr>
-			<td>Precio Compra</td>
-			<td><sf:input cssClass="form-control" path="precio_c"/></td>
-		</tr>
-		<tr>
-			<td>Precio Venta</td>
-			<td><sf:input cssClass="form-control" path="precio_v"/> </td>
-		</tr>
-		<tr>
-		<tr>
-			<td>Ruta de imagen</td>
-			<td><sf:input cssClass="form-control" path="img_tp"/> </td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><input class="btn btn-primary" type="submit" value="Guardar Cambios"/></td>
-		</tr>
-	</table>
+			<label>Stock </label>
+<sf:input cssClass="form-control" path="stock"/>
+<label>Precio Compra </label>
+			<sf:input cssClass="form-control" path="precio_c"/>
+		
+			<label>Precio Venta </label>
+	<sf:input cssClass="form-control" path="precio_v"/>
+	
+		<label>Ruta de imagen </label>
+		<sf:input cssClass="form-control" path="img_tp"/> 
+		<input class="btn btn-primary" type="submit" value="Guardar Cambios"/>
 	</sf:form>
 </div> 
 
