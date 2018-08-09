@@ -32,21 +32,63 @@
 					<th scope="col">Cantidad</th>
 					<th scope="col">Valor</th>
 					<th scope="col">Entregado</th>
+					<th scope="col">Total</th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach items="${detalles}" var="det">
-				<tr class="item-row">
+				<tr class="item-row body-table">
 			
 								<th scope="row"><c:out value = "${det.producto.prod_nom}"/></th>
 					<td><c:out value = "${det.producto.peso}"/></td>
-					<td><c:out value = "${det.cantidad}"/></td>
-					<td><c:out value = "${det.precio_vend}"/></td>
+					<td class="cant"><c:out value = "${det.cantidad}"/></td>
+					<td class="cost"><c:out value = "${det.precio_vend}"/></td>
 					<td><c:out value = "${det.entregado}"/></td>
+					<td class="prod-total"></td>
 				</tr>
 				</c:forEach>
+				<tr class="item-row">
+			
+								<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th>Total</th>
+					<td id="total"></td>
+				</tr>
+				<tr class="item-row">
+			
+								<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th>Dinero Pagado</th>
+					<td></td>
+				</tr>
+				<tr class="item-row">
+			
+								<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th>Deuda Total</th>
+					<td></td>
+				</tr>
 			</tbody>
 		</table>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script>
+	var total = 0;
+	$(".body-table").each(function(){
+		var cost = parseInt($(this).find(".cost").text());
+		var cant = parseInt($(this).find(".cant").text());
+		$(this).find(".prod-total").text("$ "+(cant*cost));
+		console.log();
+		var totalProd = parseInt($(this).children(".prod-total").html().replace("$ ",""));
+		total += totalProd;
+	});
+	$("#total").html("$ "+total);
+	</script>
 </body>
 </html>
