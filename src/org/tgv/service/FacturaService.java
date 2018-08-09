@@ -18,9 +18,9 @@ public class FacturaService {
 	@Autowired
 	private FacturaDaoInterfaz facturaDao;
 	
-	public void save(Cliente cliente, Factura factura) {
+	public Factura save(Cliente cliente, Factura factura) {
 		factura.setFecha_fac(new Timestamp(new Date().getTime()));
 		factura.setCliente(cliente);
-		facturaDao.save(factura);
+		return facturaDao.save(factura);
 	}
 }

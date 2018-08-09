@@ -6,24 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tgv.pojo.Factura;
+import com.tgv.pojo.Detalle;
 
 @Transactional
 @Repository
-public class FacturaDaoImpl implements FacturaDaoInterfaz {
-
+public class DetalleDaoImpl implements DetalleDaoInterfaz {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	
+
 	@Override
-	public Factura save(Factura factura) {
-		getSession().save(factura);
-		return factura;
+	public Detalle save(Detalle detalle) {
+
+		getSession().save(detalle);
+		return detalle;
+		
 	}
-	
+
 }

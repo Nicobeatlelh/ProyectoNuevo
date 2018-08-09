@@ -28,7 +28,7 @@ $(document).ready(function(){
 		}
 	});
 	$("#crearFac").click(function(){
-		window.location.href = 'factura/'+parseInt($('#idCli').html())+'/crear';
+		window.location.href = 'factura/'+parseInt($('#idCli').val())+'/crear';
 	});
 	$( "#nomProd" ).keypress(function( event ) {
 		if(event.keyCode!=13){
@@ -48,6 +48,10 @@ $(document).ready(function(){
 		}else{
 			window.location.href = 'Productos/'+nombre+'/'+palabra2+'/buscar';	
 		}
+	});
+	$("#buscarProducto").click(function(){
+		
+		window.location.href = 'Productos/'+$('input[name="nombre"]').val()+'/'+$('input[name="peso"]').val()+'/buscar';	
 	});
 	
 	/* ----------------------------------------- */

@@ -89,9 +89,9 @@ marg-top{
 	overflow: hidden;
 }
 
-#idCli, #nomProd, #pesoProd{
-	width:10px;
-}
+/* #idCli, #nomProd, #pesoProd{ */
+/* 	width:10px; */
+/* } */
 .imagen-carta{
 	height: 200px;
 }

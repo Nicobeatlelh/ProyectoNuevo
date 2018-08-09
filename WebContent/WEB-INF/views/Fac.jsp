@@ -98,25 +98,18 @@
 			</div>
 			<div class="row align-items-start">
 				<div class="col-4">
-					<h6>Datos del Vendedor</h6>
-					<p>Nombre: nombre</p>
-					<p>CUIT: cuit</p>
-					<p>Teléfono: teléfono</p>
-					<p>Dirección: dirección</p>
+					<h6>Agregar Datos del Vendedor</h6><input class="form-control" />
+					<label>Nombre: </label><input class="form-control" />
+					<label>CUIT: </label><input class="form-control" />
+					<label>Teléfono: </label><input class="form-control" />
+					<label>Dirección: </label><input class="form-control" />
 				</div>
 				<div class="col-4">
 
-					<h6>Datos del Cliente</h6>
-					<p>
-						Id: <span id="idCli" contentEditable="true">
-						<c:choose>
-  <c:when test="${clienteObt!=null}">
-<c:out value = "${clienteObt.id_cli}"/>
-  </c:when>
-  <c:otherwise>Id</c:otherwise>
-  </c:choose>
-  </span>
-					</p>
+					<h6>Agregar Datos del Cliente</h6>
+			
+						<label>Id:</label> <input id="idCli" value='<c:out value = "${clienteObt.id_cli}"/>'>
+	
 
 					<p>
 						Nombre: <span><c:out value = "${clienteObt.nom_cli}"/></span>
@@ -127,10 +120,16 @@
 					</p></p>
 
 				</div>
-				<div class="col offset-1">Fecha</div>
+				<!-- Fecha -->
+				<div class="col offset-1"></div>
 			</div>
 		</div>
-
+<div id="agregarProducto">
+<h3>Agregar Producto</h3>
+<input name="nombre" >
+  <input name="peso" >
+  <a id="buscarProducto" href="javascript:void(0)">Cargar Producto</a>
+</div>
 		<button id="addrow">Agregar Fila</button>
 		<table class="table">
 			<thead>
@@ -146,19 +145,8 @@
 			<tbody>
 				<tr class="item-row">
 			
-								<th scope="row"><span id="nomProd" contentEditable="true">
-	<c:choose>
-  <c:when test="${prodObt!=null}">
-<c:out value = "${prodObt.prod_nom}"/>
-  </c:when>
-  <c:otherwise>Inserte nombre</c:otherwise>
-  </c:choose></span></th>
-					<td><span id="pesoProd" contentEditable="true">	<c:choose>
-  <c:when test="${prodObt!=null}">
-<c:out value = "${prodObt.peso}"/>
-  </c:when>
-  <c:otherwise>Inserte peso</c:otherwise>
-  </c:choose></span></td>
+								<th scope="row"><c:out value = "${prodObt.prod_nom}"/></th>
+					<td><c:out value = "${prodObt.peso}"/></td>
 					<td><c:out value = "${prodObt.stock}"/></td>
 					<td><textarea class="cost">	<c:out value = "${prodObt.precio_v}"/></textarea></td>
 					
@@ -167,41 +155,11 @@
 					<td class="price"></td>
 				</tr>
 				
-				<tr>
-					<th></th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>Subtotal</td>
-					<td id="subtotal"></td>
-				</tr>
-				<tr>
-					<th></th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>Total</td>
-					<td id="total"></td>
-				</tr>
-				<tr>
-					<th></th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>Dinero Pagado</td>
-					<td><textarea id="paid"></textarea></td>
-				</tr>
-				<tr>
-					<th></th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>Deuda</td>
-					<td class="due"></td>
-				</tr>
 			</tbody>
 		</table>
 		<a id="crearFac" href="#">Crear Factura</a>
+		<a href="factura/redirect">Crear Detalle</a>
+		<c:out value="${ factura.id_fac }"/>
 	</div>
 	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="resources/js/example2.js"></script>

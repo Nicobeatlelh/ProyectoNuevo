@@ -2,6 +2,7 @@ package com.tgv.pojo;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class Factura {
 	private Cliente cliente;
 	
 	private Timestamp fecha_fac;
+	
+	@OneToMany(mappedBy="factura")
+	private Set<Detalle> detalles;
 
 	public int getId_fac() {
 		return id_fac;
@@ -48,5 +53,13 @@ public class Factura {
 	public void setFecha_fac(Timestamp fecha_fac) {
 		this.fecha_fac = fecha_fac;
 	}
+
+	@Override
+	public String toString() {
+		return "Factura [id_fac=" + id_fac + ", cliente=" + cliente + ", fecha_fac=" + fecha_fac + ", detalles="
+				+ detalles + "]";
+	}
+	
+	
 	
 }

@@ -2,16 +2,22 @@ package com.tgv.pojo;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="Producto")
+@IdClass(EmbededIdProducto.class)
 public class Producto implements Serializable {
 		
 	@Id
@@ -26,6 +32,10 @@ public class Producto implements Serializable {
 	private Timestamp fua;
 	private String img_tp = "resources/img/no-disponible.png";
 	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="producto", cascade = CascadeType.ALL)
+	private Set<Detalle> detalles;
+//	
+//	private static final long serialVersionUID = 1113799434508676095L;
 	
 	public String getPeso() {
 		return peso;
@@ -104,6 +114,13 @@ public class Producto implements Serializable {
 		this.stock = stock;
 		this.precio_c = precio_c;
 	}
+
+	@Override
+	public String toString() {
+		return "Producto [prod_nom=" + prod_nom + ", peso=" + peso + ", stock=" + stock + ", precio_c=" + precio_c
+				+ ", precio_v=" + precio_v + ", fua=" + fua + ", img_tp=" + img_tp + ", detalles=" + detalles + "]";
+	}
+	
 	
 	
 	
