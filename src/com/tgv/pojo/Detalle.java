@@ -85,6 +85,14 @@ public class Detalle {
 	public void setEntregado(String entregado) {
 		this.entregado = entregado;
 	}
+
+	@Override
+	public String toString() {
+		return "Detalle [num_detalle=" + num_detalle + ", factura=" + factura + ", producto=" + producto + ", cantidad="
+				+ cantidad + ", precio_vend=" + precio_vend + ", entregado=" + entregado + "]";
+	}
+	
+	
 	
 	
 

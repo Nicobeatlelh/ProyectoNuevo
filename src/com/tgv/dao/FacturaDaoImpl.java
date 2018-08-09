@@ -1,5 +1,8 @@
 package com.tgv.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +28,18 @@ public class FacturaDaoImpl implements FacturaDaoInterfaz {
 		getSession().save(factura);
 		return factura;
 	}
+
+	@Override
+	public List<Factura> getFacturas() {
+
+		List<Factura> facturas = null;
+		Query query = (Query) getSession().createQuery("from Factura");
+		facturas = query.list();
+		return facturas;
+	}
+
+
+
+
 	
 }

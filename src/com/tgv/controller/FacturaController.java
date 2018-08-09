@@ -47,12 +47,15 @@ public class FacturaController {
 		
 	return "redirect:/factura";
 	}
-	@RequestMapping("/factura/redirect")
-	public String redirect(Model model, @ModelAttribute("factura") Factura factura,  HttpSession session) {
+	@RequestMapping("/factura/redirect/{cant}")
+	public String redirect(Model model, @PathVariable("cant") int cant, HttpSession session) {
 		Producto prod = (Producto) session.getAttribute("prodObt");
+		Factura factura = (Factura) session.getAttribute("factura");
 		System.out.println("Esta es la factura----" + factura.toString());
 		System.out.println("Esta es el producto----" + prod.toString());
-		Detalle d = detalleService.save(factura, prod, new Detalle());
+		if(detalleService.save(factura, prod, new Detalle(), cant) != null) {
+//		Detalle d = detalleService.save(factura, prod, new Detalle(), cant);
+		}
 		return "redirect:/factura";
 	}
 

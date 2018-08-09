@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +29,7 @@ public class Factura {
 	
 	private Timestamp fecha_fac;
 	
-	@OneToMany(mappedBy="factura")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="factura", cascade = CascadeType.ALL)
 	private Set<Detalle> detalles;
 
 	public int getId_fac() {

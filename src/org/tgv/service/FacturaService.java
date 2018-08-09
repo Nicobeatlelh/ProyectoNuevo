@@ -2,6 +2,7 @@ package org.tgv.service;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,8 @@ public class FacturaService {
 		factura.setFecha_fac(new Timestamp(new Date().getTime()));
 		factura.setCliente(cliente);
 		return facturaDao.save(factura);
+	}
+	public List<Factura> getFacturas(){
+		return facturaDao.getFacturas();
 	}
 }

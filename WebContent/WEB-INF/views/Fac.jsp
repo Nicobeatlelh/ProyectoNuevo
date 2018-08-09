@@ -139,7 +139,6 @@
 					<th scope="col">Stock</th>
 					<th scope="col">Precio-Unit</th>
 					<th scope="col">Cantidad</th>
-					<th scope="col">Precio-Total</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -148,17 +147,14 @@
 								<th scope="row"><c:out value = "${prodObt.prod_nom}"/></th>
 					<td><c:out value = "${prodObt.peso}"/></td>
 					<td><c:out value = "${prodObt.stock}"/></td>
-					<td><textarea class="cost">	<c:out value = "${prodObt.precio_v}"/></textarea></td>
-					
-
-					<td><textarea class="qty"> </textarea></td>
-					<td class="price"></td>
+					<td><c:out value = "${prodObt.precio_v}"/></td>
+					<td><input name="cantidad" /></td>
 				</tr>
 				
 			</tbody>
 		</table>
 		<a id="crearFac" href="#">Crear Factura</a>
-		<a href="factura/redirect">Crear Detalle</a>
+		<a id="crearDetalle" href="#">Crear Detalle</a>
 		<c:out value="${ factura.id_fac }"/>
 	</div>
 	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

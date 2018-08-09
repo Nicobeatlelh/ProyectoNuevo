@@ -30,25 +30,31 @@ $(document).ready(function(){
 	$("#crearFac").click(function(){
 		window.location.href = 'factura/'+parseInt($('#idCli').val())+'/crear';
 	});
-	$( "#nomProd" ).keypress(function( event ) {
-		if(event.keyCode!=13){
-			 nombre+=event.key;
-			 $('#nomProdForm').val(nombre);
-			 console.log(nombre);
-		}else{
-			window.location.href = 'Productos/'+nombre+'/'+palabra2+'/buscar';
-		}
+	$("#crearDetalle").click(function(){
+		window.location.href = 'factura/redirect/'+ parseInt($('input[name="cantidad"]').val());
 	});
-	
-	$( "#pesoProd" ).keypress(function( event ) {
-		if(event.keyCode!=13){
-			 palabra2+=event.key;
-			 $('#pesoProdForm').val(palabra2);
-			 console.log(palabra2);
-		}else{
-			window.location.href = 'Productos/'+nombre+'/'+palabra2+'/buscar';	
-		}
-	});
+	href=""
+		
+		
+//	$( "#nomProd" ).keypress(function( event ) {
+//		if(event.keyCode!=13){
+//			 nombre+=event.key;
+//			 $('#nomProdForm').val(nombre);
+//			 console.log(nombre);
+//		}else{
+//			window.location.href = 'Productos/'+nombre+'/'+palabra2+'/buscar';
+//		}
+//	});
+//	
+//	$( "#pesoProd" ).keypress(function( event ) {
+//		if(event.keyCode!=13){
+//			 palabra2+=event.key;
+//			 $('#pesoProdForm').val(palabra2);
+//			 console.log(palabra2);
+//		}else{
+//			window.location.href = 'Productos/'+nombre+'/'+palabra2+'/buscar';	
+//		}
+//	});
 	$("#buscarProducto").click(function(){
 		
 		window.location.href = 'Productos/'+$('input[name="nombre"]').val()+'/'+$('input[name="peso"]').val()+'/buscar';	
@@ -89,6 +95,7 @@ $(document).ready(function(){
 	  });
 	  
 	  $("#date").val(print_today());
+	  
 })
 
 
